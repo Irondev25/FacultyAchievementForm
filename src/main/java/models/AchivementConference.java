@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package models;
+
+import java.sql.Date;
+
+/**
+ *
+ * @author bhask
+ */
+public class AchivementConference {
+    int fid;
+    String conferenceName;
+    String titlePaper;
+    Date datePresentation;
+    String type;
+
+    public AchivementConference() {
+    }
+    
+    public AchivementConference(int fid, String conferenceName, String titlePaper, Date datePresentation, String type) {
+        this.fid = fid;
+        this.conferenceName = conferenceName;
+        this.titlePaper = titlePaper;
+        this.datePresentation = datePresentation;
+        this.type = type;
+    }
+    
+    public int getFid() {
+        return fid;
+    }
+
+    public void setFid(int fid) {
+        this.fid = fid;
+    }
+
+    public String getConferenceName() {
+        return conferenceName;
+    }
+
+    public void setConferenceName(String conferenceName) {
+        this.conferenceName = conferenceName;
+    }
+
+    public String getTitlePaper() {
+        return titlePaper;
+    }
+
+    public void setTitlePaper(String titlePaper) {
+        this.titlePaper = titlePaper;
+    }
+
+    public Date getDatePresentation() {
+        return datePresentation;
+    }
+
+    public void setDatePresentation(Date datePresentation) {
+        this.datePresentation = datePresentation;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
+}
