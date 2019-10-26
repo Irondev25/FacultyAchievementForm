@@ -6,6 +6,7 @@
 package models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -133,5 +134,11 @@ public class Teacher {
         this.mobileList = mobileList;
     }
     
+    public LocalDate getDobDate(){
+        return this.dob.toLocalDate();
+    }
     
+    public LocalDate getDojDate(){
+        return this.doj.toLocalDate();
+    }
 }

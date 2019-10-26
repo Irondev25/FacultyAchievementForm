@@ -6,18 +6,21 @@
 package models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author bhask
  */
 public class AchivementConference {
+    int pid;
     int fid;
     String conferenceName;
     String titlePaper;
     Date datePresentation;
     String type;
 
+    
     public AchivementConference() {
     }
     
@@ -27,6 +30,14 @@ public class AchivementConference {
         this.titlePaper = titlePaper;
         this.datePresentation = datePresentation;
         this.type = type;
+    }
+    
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
     }
     
     public int getFid() {
@@ -67,6 +78,10 @@ public class AchivementConference {
 
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public LocalDate getLocalDate(){
+        return this.datePresentation.toLocalDate();
     }
     
 }

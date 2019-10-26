@@ -9,7 +9,6 @@ import database.Database;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 import models.AchievementAward;
 
@@ -33,7 +32,7 @@ public class AchivementAwardController extends AchievementAward{
         String sql = "";
         PreparedStatement pst;
         try {
-            sql = "insert into ach_award values(?,?,?)";
+            sql = "insert into ach_award(ondate,details,fid) values(?,?,?)";
             pst = con.prepareStatement(sql);
             pst.setInt(1, achievementAward.getFid());
             pst.setDate(2, achievementAward.getDate());
@@ -46,15 +45,46 @@ public class AchivementAwardController extends AchievementAward{
         return 0;
     }
     
-    public int deleteAchivementAward(int fid,Date date){
+    public int updateAchivementAward(AchievementAward achievementAward){
+        int res=0;
+        String sql="";
+        PreparedStatement pst;
+        try {
+            sql = "update ach_award set ondate=?,details=?";
+            pst = con.prepareStatement(sql);
+            pst.setDate(1, achievementAward.getDate());
+            pst.setString(2,achievementAward.getDetailAward());
+            res = pst.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return 0;
+    }
+    
+    public int deleteAchivementAward(int pid){
         int res = 0;
         String sql = "";
         PreparedStatement pst;
         try {
-            sql = "delete from ach_award where fid=? and ondate=?";
+            sql = "delete from ach_award where pid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, pid);
+            res = pst.executeUpdate();
+            return res;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return 0;
+    }
+    
+    public int deleteAchivementAwardFid(int fid){
+        int res = 0;
+        String sql = "";
+        PreparedStatement pst;
+        try {
+            sql = "delete from ach_award where fid=?";
             pst = con.prepareStatement(sql);
             pst.setInt(1, fid);
-            pst.setDate(2, date);
             res = pst.executeUpdate();
             return res;
         } catch (SQLException e) {

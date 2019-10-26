@@ -43,6 +43,38 @@ public class MobileController extends Mobile{
         return res;
     }
     
+    public int deleteMobile(int fid){
+        int res;
+        String sql;
+        PreparedStatement pst;
+        try {
+            sql = "delete from faculty_mob where fid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, fid);
+            res = pst.executeUpdate();
+            return res;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return 0;
+    }
+    
+    public int deleteMobile(int fid, String mobileNumber){
+        int res;
+        String sql;
+        PreparedStatement pst;
+        try {
+            sql = "delete from faculty_mob where fid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, fid);
+            res = pst.executeUpdate();
+            return res;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return 0;
+    }
+    
     public ArrayList<String> getMobiles(int fid){
         ArrayList<String> mobileNumbersList = new ArrayList<>();
         ResultSet resultSet;
@@ -59,5 +91,14 @@ public class MobileController extends Mobile{
             System.err.println(e.getMessage());
         }
         return mobileNumbersList;
+    }
+    
+    public String[] getMobileStrings(int fid){
+        ArrayList<String> mobileArrayList = getMobiles(fid);
+        String[] mobiles = new String[mobileArrayList.size()];
+        for(int i=0; i< mobileArrayList.size(); i++){
+            mobiles[i] = mobileArrayList.get(i);
+        }
+        return mobiles;
     }
 }

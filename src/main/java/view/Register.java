@@ -67,7 +67,7 @@ public class Register extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         mobileNumberLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        addMob = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         mobileList = new javax.swing.JList<>();
 
@@ -138,10 +138,10 @@ public class Register extends javax.swing.JFrame {
 
         mobileNumberLabel.setText("Mobile Number");
 
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addMob.setText("Add");
+        addMob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addMobActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class Register extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                                         .addGap(75, 75, 75))
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(addMob, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -254,7 +254,7 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(mobileNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                            .addComponent(addMob, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -342,12 +342,12 @@ public class Register extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addMobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMobActionPerformed
         // TODO add your handling code here:
         mobileForm moForm = new mobileForm(this);
         moForm.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //this.dispose();
+    }//GEN-LAST:event_addMobActionPerformed
     
     private String[] arrayListToStrings(){
         String string[] = new String[mobileNums.size()];
@@ -415,6 +415,7 @@ public class Register extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PasswordField;
+    private javax.swing.JButton addMob;
     private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JLabel didLabel;
     private javax.swing.JLabel dobLabel;
@@ -425,7 +426,6 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstNameTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lastNameTextField;

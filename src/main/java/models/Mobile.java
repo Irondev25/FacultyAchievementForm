@@ -36,5 +36,4 @@ public class Mobile {
     public void setMobileNum(String mobileNum) {
         this.mobileNum = mobileNum;
     }
-    
 }

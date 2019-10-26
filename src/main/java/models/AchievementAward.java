@@ -6,12 +6,14 @@
 package models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author bhask
  */
 public class AchievementAward {
+    int pid;
     int fid;
     Date date;
     String detailAward;
@@ -50,6 +52,10 @@ public class AchievementAward {
 
     public void setDetailAward(String detailAward) {
         this.detailAward = detailAward;
+    }
+    
+    public LocalDate getLocalDate(){
+        return this.date.toLocalDate();
     }
     
 }

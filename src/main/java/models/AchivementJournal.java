@@ -6,26 +6,32 @@
 package models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author bhask
  */
 public class AchivementJournal {
-    int fid;
+    int pid;
     String titleJournal;
     String titlePaper;
     Date datePub;
     String type;
+    float impact_factor;
+    int fid;
 
-    public AchivementJournal(int fid, String titleJournal, String titlePaper, Date datePub, String type) {
-        this.fid = fid;
+    public AchivementJournal(int pid, String titleJournal, String titlePaper, Date datePub, String type, float impact_factor, int fid) {
+        this.pid = pid;
         this.titleJournal = titleJournal;
         this.titlePaper = titlePaper;
         this.datePub = datePub;
         this.type = type;
+        this.impact_factor = impact_factor;
+        this.fid = fid;
     }
-
+    
+    
     public AchivementJournal() {
     }
 
@@ -68,5 +74,24 @@ public class AchivementJournal {
     public void setType(String type) {
         this.type = type;
     }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
+    public float getImpact_factor() {
+        return impact_factor;
+    }
+
+    public void setImpact_factor(float impact_factor) {
+        this.impact_factor = impact_factor;
+    }
     
+    public LocalDate getLocalDate(){
+        return this.datePub.toLocalDate();
+    }
 }
