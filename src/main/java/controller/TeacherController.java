@@ -173,7 +173,6 @@ public class TeacherController extends Teacher{
             pst.setString(10, teacher.getPassword());
             pst.setInt(11, teacher.getFid());
             res = pst.executeUpdate();
-            System.out.println(pst.toString());
             return res;
         } catch (SQLException e) {
             System.err.println("SQLError: "+e.getMessage());

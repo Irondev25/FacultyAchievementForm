@@ -33,82 +33,116 @@ public class FacultyPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        welcome = new javax.swing.JLabel();
-        editProfileButton = new javax.swing.JButton();
-        deleteProfileButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
-        adminButton = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AwardList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        editMenuItem = new javax.swing.JMenuItem();
+        deleteMenuItem = new javax.swing.JMenuItem();
+        LogoutMenuItem = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        awardMenuItem = new javax.swing.JMenuItem();
+        conferenceMenuItem = new javax.swing.JMenuItem();
+        journalMenuItem = new javax.swing.JMenuItem();
+        workshopMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        welcome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcome.setText("Welcome " + this.teacher.getFname() + " " + this.teacher.getLname());
+        AwardList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(AwardList);
 
-        editProfileButton.setText("Edit Profile");
-        editProfileButton.addActionListener(new java.awt.event.ActionListener() {
+        jTabbedPane1.addTab("Awards", jScrollPane1);
+        jTabbedPane1.addTab("Conference", jScrollPane2);
+        jTabbedPane1.addTab("Journal", jScrollPane3);
+        jTabbedPane1.addTab("Workshop", jScrollPane4);
+
+        jMenu2.setText("Welcome " + this.teacher.getFname());
+
+        editMenuItem.setText("Edit Profile");
+        editMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editProfileButtonActionPerformed(evt);
+                editMenuItemActionPerformed(evt);
             }
         });
+        jMenu2.add(editMenuItem);
 
-        deleteProfileButton.setText("Delete Profile");
-        deleteProfileButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteMenuItem.setText("Delete Profile");
+        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteProfileButtonActionPerformed(evt);
+                deleteMenuItemActionPerformed(evt);
             }
         });
+        jMenu2.add(deleteMenuItem);
 
-        logoutButton.setText("Logout");
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+        LogoutMenuItem.setText("Logout");
+        LogoutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                LogoutMenuItemActionPerformed(evt);
             }
         });
+        jMenu2.add(LogoutMenuItem);
 
-        adminButton.setText("Admin");
+        jMenuBar1.add(jMenu2);
+
+        jMenu1.setText("Create Achivement");
+
+        awardMenuItem.setText("Award");
+        awardMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                awardMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(awardMenuItem);
+
+        conferenceMenuItem.setText("Conference");
+        jMenu1.add(conferenceMenuItem);
+
+        journalMenuItem.setText("Journal");
+        jMenu1.add(journalMenuItem);
+
+        workshopMenuItem.setText("Workshop");
+        jMenu1.add(workshopMenuItem);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(welcome, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(editProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteProfileButton)
-                .addContainerGap())
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(deleteProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(313, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
+    private void editMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuItemActionPerformed
         // TODO add your handling code here:
         updateFaculty upFaculty = new updateFaculty(teacher);
         upFaculty.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_editProfileButtonActionPerformed
+    }//GEN-LAST:event_editMenuItemActionPerformed
 
-    private void deleteProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteProfileButtonActionPerformed
+    private void LogoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutMenuItemActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_LogoutMenuItemActionPerformed
+
+    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
         // TODO add your handling code here:
         int input = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete your profile?", "Delete Profile",  JOptionPane.YES_NO_OPTION);
         if(input == 0){
@@ -123,13 +157,13 @@ public class FacultyPanel extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Problem occured when deleting teacher");
             }
         }
-    }//GEN-LAST:event_deleteProfileButtonActionPerformed
+    }//GEN-LAST:event_deleteMenuItemActionPerformed
 
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+    private void awardMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_awardMenuItemActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new Login().setVisible(true);
-    }//GEN-LAST:event_logoutButtonActionPerformed
+        Award award = new Award(this.teacher);
+        award.setVisible(true);
+    }//GEN-LAST:event_awardMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,10 +201,21 @@ public class FacultyPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adminButton;
-    private javax.swing.JButton deleteProfileButton;
-    private javax.swing.JButton editProfileButton;
-    private javax.swing.JButton logoutButton;
-    private javax.swing.JLabel welcome;
+    private javax.swing.JList<String> AwardList;
+    private javax.swing.JMenuItem LogoutMenuItem;
+    private javax.swing.JMenuItem awardMenuItem;
+    private javax.swing.JMenuItem conferenceMenuItem;
+    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem editMenuItem;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem journalMenuItem;
+    private javax.swing.JMenuItem workshopMenuItem;
     // End of variables declaration//GEN-END:variables
 }

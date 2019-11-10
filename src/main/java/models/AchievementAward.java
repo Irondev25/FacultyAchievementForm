@@ -58,4 +58,7 @@ public class AchievementAward {
         return this.date.toLocalDate();
     }
     
+    public String toString(){
+        return detailAward.substring(0,100) + date.toString();
+    }
 }

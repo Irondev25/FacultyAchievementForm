@@ -94,4 +94,8 @@ public class AchivementJournal {
     public LocalDate getLocalDate(){
         return this.datePub.toLocalDate();
     }
+    
+    public String toString(){
+        return titleJournal+":"+titlePaper+" on "+datePub.toString();
+    }
 }

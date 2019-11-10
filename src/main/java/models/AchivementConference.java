@@ -84,4 +84,8 @@ public class AchivementConference {
         return this.datePresentation.toLocalDate();
     }
     
+    public String toString(){
+        return conferenceName+":"+titlePaper+" on "+datePresentation.toString();
+    }
+    
 }

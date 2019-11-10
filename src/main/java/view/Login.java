@@ -153,10 +153,10 @@ public class Login extends javax.swing.JFrame {
         TeacherController teacherController = new TeacherController();
         boolean res = teacherController.checkLogin(teacher);
         if(res){
-            JOptionPane.showMessageDialog(null, "Login Success");
+            JOptionPane.showMessageDialog(this, "Login Success");
         }
         else{
-            JOptionPane.showMessageDialog(null, "Login Unsucessfull");
+            JOptionPane.showMessageDialog(this, "Login Unsucessfull");
             return;
         }
         Teacher teacher1 = teacherController.getTeacherByLoginId(loginId);

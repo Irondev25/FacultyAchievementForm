@@ -78,4 +78,8 @@ public class AchivementWorkshop {
     public void setFid(int fid) {
         this.fid = fid;
     }
+    
+    public String toString(){
+        return topic+" on "+date_workshop.toString();
+    }
 }
