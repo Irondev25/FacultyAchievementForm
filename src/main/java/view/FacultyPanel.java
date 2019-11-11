@@ -103,12 +103,27 @@ public class FacultyPanel extends javax.swing.JFrame {
         jMenu1.add(awardMenuItem);
 
         conferenceMenuItem.setText("Conference");
+        conferenceMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conferenceMenuItemActionPerformed(evt);
+            }
+        });
         jMenu1.add(conferenceMenuItem);
 
         journalMenuItem.setText("Journal");
+        journalMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                journalMenuItemActionPerformed(evt);
+            }
+        });
         jMenu1.add(journalMenuItem);
 
         workshopMenuItem.setText("Workshop");
+        workshopMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workshopMenuItemActionPerformed(evt);
+            }
+        });
         jMenu1.add(workshopMenuItem);
 
         jMenuBar1.add(jMenu1);
@@ -164,6 +179,22 @@ public class FacultyPanel extends javax.swing.JFrame {
         Award award = new Award(this.teacher);
         award.setVisible(true);
     }//GEN-LAST:event_awardMenuItemActionPerformed
+
+    private void conferenceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conferenceMenuItemActionPerformed
+        // TODO add your handling code here:
+        Conference conference = new Conference(this.teacher);
+        conference.setVisible(true);
+    }//GEN-LAST:event_conferenceMenuItemActionPerformed
+
+    private void journalMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_journalMenuItemActionPerformed
+        // TODO add your handling code here:
+        new Journal(this.teacher).setVisible(true);
+    }//GEN-LAST:event_journalMenuItemActionPerformed
+
+    private void workshopMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workshopMenuItemActionPerformed
+        // TODO add your handling code here:
+        new Workshop(this.teacher).setVisible(true);
+    }//GEN-LAST:event_workshopMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
