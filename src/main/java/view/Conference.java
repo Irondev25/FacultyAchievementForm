@@ -21,8 +21,10 @@ public class Conference extends javax.swing.JFrame {
      * Creates new form Conference
      */
     private Teacher teacher;
-    public Conference(Teacher teacher) {
+    private FacultyPanel facultyPanel;
+    public Conference(Teacher teacher, FacultyPanel facultyPanel) {
         this.teacher = teacher;
+        this.facultyPanel = facultyPanel;
         initComponents();
     }
 
@@ -171,6 +173,7 @@ public class Conference extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(rootPane, "Achivement creation unsuccessful!!");
         }
+        facultyPanel.refreshConf();
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -209,7 +212,7 @@ public class Conference extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Conference(new Teacher()).setVisible(true);
+                new Conference(new Teacher(), new FacultyPanel(new Teacher())).setVisible(true);
             }
         });
     }

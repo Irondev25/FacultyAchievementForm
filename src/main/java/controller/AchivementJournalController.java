@@ -8,7 +8,9 @@ package controller;
 import database.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import models.AchievementAward;
 import models.AchivementJournal;
 
@@ -38,7 +40,7 @@ public class AchivementJournalController extends AchivementJournal{
             pst.setString(2, achivementJournal.getTitlePaper());
             pst.setDate(3, achivementJournal.getDatePub());
             pst.setString(4, achivementJournal.getType());
-            pst.setDouble(5, achivementJournal.getImpact_factor());
+            pst.setFloat(5, achivementJournal.getImpact_factor());
             pst.setInt(6, achivementJournal.getFid());
             res = pst.executeUpdate();
             return res;
@@ -98,5 +100,35 @@ public class AchivementJournalController extends AchivementJournal{
             System.err.println(e.getMessage());
         }
         return 0;
+    }
+    
+    public ArrayList<AchivementJournal> getAwards(int fid){
+        ArrayList<AchivementJournal> awards = new ArrayList<>();
+        AchivementJournal achivementJournal = new AchivementJournal();
+        ResultSet resultSet;
+        String sql = "";
+        try{
+            sql =  "select * from ach_journal where fid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, fid);
+            resultSet = pst.executeQuery();
+            while(resultSet.next()){
+                //journal_title paper_title date pub_date type If fid
+                achivementJournal = new AchivementJournal(
+                resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getDate(4),
+                        resultSet.getString(5),
+                        resultSet.getFloat(6),
+                        resultSet.getInt(7)
+                );
+                awards.add(achivementJournal);
+            }
+            return awards;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+        return awards;
     }
 }

@@ -21,8 +21,10 @@ public class Workshop extends javax.swing.JFrame {
      * Creates new form Workshop
      */
     private Teacher teacher;
-    public Workshop(Teacher teacher) {
+    private FacultyPanel facultyPanel;
+    public Workshop(Teacher teacher, FacultyPanel facultyPanel) {
         this.teacher = teacher;
+        this.facultyPanel = facultyPanel;
         initComponents();
     }
 
@@ -172,6 +174,7 @@ public class Workshop extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(rootPane, "Workshop Creation Unsuccessful!!");
         }
+        this.facultyPanel.refreshWorkshop();
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -210,7 +213,7 @@ public class Workshop extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Workshop(new Teacher()).setVisible(true);
+                new Workshop(new Teacher(), new FacultyPanel(new Teacher())).setVisible(true);
             }
         });
     }

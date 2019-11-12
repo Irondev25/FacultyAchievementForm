@@ -8,7 +8,9 @@ package controller;
 import database.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import models.AchivementWorkshop;
 
 /**
@@ -89,5 +91,34 @@ public class AchivementWorkshopController {
         } catch (Exception e) {
         }
         return res;
+    }
+    
+    public ArrayList<AchivementWorkshop> getAwards(int fid){
+        ArrayList<AchivementWorkshop> awards = new ArrayList<>();
+        AchivementWorkshop achivementWorkshop = new AchivementWorkshop();
+        ResultSet resultSet;
+        String sql = "";
+        try{
+            sql =  "select * from ach_workshop where fid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, fid);
+            resultSet = pst.executeQuery();
+            while(resultSet.next()){
+                //topic date loation type fid
+                achivementWorkshop = new AchivementWorkshop(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getDate(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5),
+                        resultSet.getInt(6)
+                );
+                awards.add(achivementWorkshop);
+            }
+            return awards;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+        return awards;
     }
 }

@@ -96,6 +96,6 @@ public class AchivementJournal {
     }
     
     public String toString(){
-        return titleJournal+":"+titlePaper+" on "+datePub.toString();
+        return titleJournal+":"+titlePaper+"("+type+") "+" on "+datePub.toString()+" has Impact Factor: " + this.impact_factor;
     }
 }

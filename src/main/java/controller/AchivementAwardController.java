@@ -122,8 +122,9 @@ public class AchivementAwardController extends AchievementAward{
         return mobiles;
     }*/
     
-    /*public ArrayList<String> getAwards(int fid){
-        ArrayList<String> awards = new ArrayList<>();
+    public ArrayList<AchievementAward> getAwards(int fid){
+        ArrayList<AchievementAward> awards = new ArrayList<>();
+        AchievementAward achievementAward = new AchievementAward();
         ResultSet resultSet;
         String sql = "";
         try{
@@ -131,9 +132,14 @@ public class AchivementAwardController extends AchievementAward{
             pst = con.prepareStatement(sql);
             pst.setInt(1, fid);
             resultSet = pst.executeQuery();
-            while(res)
+            while(resultSet.next()){
+                achievementAward = new AchievementAward(resultSet.getInt(4),resultSet.getDate(2),resultSet.getString(3));
+                awards.add(achievementAward);
+            }
+            return awards;
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
-    }*/
+        return awards;
+    }
 }

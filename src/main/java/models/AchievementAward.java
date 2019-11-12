@@ -58,7 +58,8 @@ public class AchievementAward {
         return this.date.toLocalDate();
     }
     
+    @Override
     public String toString(){
-        return detailAward.substring(0,100) + date.toString();
+        return detailAward.substring(0,(detailAward.length() > 100)?100:detailAward.length()) +" "+ date.toString();
     }
 }

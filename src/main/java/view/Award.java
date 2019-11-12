@@ -21,8 +21,10 @@ public class Award extends javax.swing.JFrame {
      * Creates new form Award
      */
     private Teacher teacher;
-    public Award(Teacher teacher) {
+    private FacultyPanel facultyPanel;
+    public Award(Teacher teacher, FacultyPanel facultyPanel) {
         this.teacher = teacher;
+        this.facultyPanel = facultyPanel;
         initComponents();
     }
 
@@ -154,6 +156,7 @@ public class Award extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(rootPane, "Achivement Award creation false");
         }
+        facultyPanel.refreshAward();
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -187,7 +190,7 @@ public class Award extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Award(new Teacher()).setVisible(true);
+                new Award(new Teacher(),new FacultyPanel(new Teacher())).setVisible(true);
             }
         });
     }

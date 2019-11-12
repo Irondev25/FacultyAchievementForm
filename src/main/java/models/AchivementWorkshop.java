@@ -80,6 +80,6 @@ public class AchivementWorkshop {
     }
     
     public String toString(){
-        return topic+" on "+date_workshop.toString();
+        return topic+"("+type+") at "+this.location+" on "+date_workshop.toString();
     }
 }

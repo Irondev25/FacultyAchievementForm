@@ -21,8 +21,10 @@ public class Journal extends javax.swing.JFrame {
      * Creates new form Journal
      */
     private Teacher teacher;
-    public Journal(Teacher teacher) {
+    FacultyPanel facultyPanel;
+    public Journal(Teacher teacher, FacultyPanel facultyPanel) {
         this.teacher = teacher;
+        this.facultyPanel = facultyPanel;
         initComponents();
     }
 
@@ -180,6 +182,7 @@ public class Journal extends javax.swing.JFrame {
         String impactFactor = ifTextField.getText();
         try {
             float ipf = Float.parseFloat(impactFactor);
+            achivementJournal.setImpact_factor(ipf);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Invalid Impact Factor. It must be float value");
             ifTextField.setText("");
@@ -194,6 +197,7 @@ public class Journal extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(rootPane, "Journal Creation Unsuccessful!!");
         }
+        this.facultyPanel.refreshJournal();
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -227,7 +231,7 @@ public class Journal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Journal(new Teacher()).setVisible(true);
+                new Journal(new Teacher(),new FacultyPanel(new Teacher())).setVisible(true);
             }
         });
     }

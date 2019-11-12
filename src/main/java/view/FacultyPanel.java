@@ -5,8 +5,18 @@
  */
 package view;
 
+import controller.AchivementAwardController;
+import controller.AchivementConferenceController;
+import controller.AchivementJournalController;
+import controller.AchivementWorkshopController;
 import controller.TeacherController;
+import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import models.AchievementAward;
+import models.AchivementConference;
+import models.AchivementJournal;
+import models.AchivementWorkshop;
 import models.Teacher;
 
 /**
@@ -23,7 +33,43 @@ public class FacultyPanel extends javax.swing.JFrame {
         this.teacher = teacher;
         initComponents();
     }
-
+        
+    private String[] getAwardString(ArrayList<AchievementAward> awards){
+        int n = awards.size();
+        String[] strings = new String[n];
+        for(int i=0; i<n; i++){
+            strings[i] = awards.get(i).toString();
+        }
+        return strings;
+    }
+    
+    private String[] getConfString(ArrayList<AchivementConference> awards){
+        int n = awards.size();
+        String[] strings = new String[n];
+        for(int i=0; i<n; i++){
+            strings[i] = awards.get(i).toString();
+        }
+        return strings;
+    }
+    
+    private String[] getJournalString(ArrayList<AchivementJournal> awards){
+        int n = awards.size();
+        String[] strings = new String[n];
+        for(int i=0; i<n; i++){
+            strings[i] = awards.get(i).toString();
+        }
+        return strings;
+    }
+    
+    private String[] getWorkshopString(ArrayList<AchivementWorkshop> awards){
+        int n = awards.size();
+        String[] strings = new String[n];
+        for(int i=0; i<n; i++){
+            strings[i] = awards.get(i).toString();
+        }
+        return strings;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,8 +83,11 @@ public class FacultyPanel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         AwardList = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
+        confList = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
+        journalList = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
+        workshopList = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         editMenuItem = new javax.swing.JMenuItem();
@@ -53,15 +102,44 @@ public class FacultyPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         AwardList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            AchivementAwardController achivementAwardController = new AchivementAwardController();
+            ArrayList<AchievementAward> awards = achivementAwardController.getAwards(teacher.getFid());
+            String[] strings = getAwardString(awards);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(AwardList);
 
         jTabbedPane1.addTab("Awards", jScrollPane1);
+
+        confList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementConference> awards= new AchivementConferenceController().getAwards(teacher.getFid());
+            String[] strings = getConfString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(confList);
+
         jTabbedPane1.addTab("Conference", jScrollPane2);
+
+        journalList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementJournal> awards = new AchivementJournalController().getAwards(teacher.getFid());
+            String[] strings = getJournalString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(journalList);
+
         jTabbedPane1.addTab("Journal", jScrollPane3);
+
+        workshopList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementWorkshop> awards = new AchivementWorkshopController().getAwards(teacher.getFid());
+            String[] strings = getWorkshopString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(workshopList);
+
         jTabbedPane1.addTab("Workshop", jScrollPane4);
 
         jMenu2.setText("Welcome " + this.teacher.getFname());
@@ -138,7 +216,7 @@ public class FacultyPanel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,26 +254,66 @@ public class FacultyPanel extends javax.swing.JFrame {
 
     private void awardMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_awardMenuItemActionPerformed
         // TODO add your handling code here:
-        Award award = new Award(this.teacher);
+        Award award = new Award(this.teacher, this);
         award.setVisible(true);
     }//GEN-LAST:event_awardMenuItemActionPerformed
 
     private void conferenceMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conferenceMenuItemActionPerformed
         // TODO add your handling code here:
-        Conference conference = new Conference(this.teacher);
+        Conference conference = new Conference(this.teacher, this);
         conference.setVisible(true);
     }//GEN-LAST:event_conferenceMenuItemActionPerformed
 
     private void journalMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_journalMenuItemActionPerformed
         // TODO add your handling code here:
-        new Journal(this.teacher).setVisible(true);
+        new Journal(this.teacher,this).setVisible(true);
     }//GEN-LAST:event_journalMenuItemActionPerformed
 
     private void workshopMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workshopMenuItemActionPerformed
         // TODO add your handling code here:
-        new Workshop(this.teacher).setVisible(true);
+        new Workshop(this.teacher,this).setVisible(true);
     }//GEN-LAST:event_workshopMenuItemActionPerformed
 
+    public void refreshAward(){
+        AwardList.setModel(new javax.swing.AbstractListModel<String>() {
+            AchivementAwardController achivementAwardController = new AchivementAwardController();
+            ArrayList<AchievementAward> awards = achivementAwardController.getAwards(teacher.getFid());
+            String[] strings = getAwardString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(AwardList);
+    }
+    
+    public void refreshConf(){
+        confList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementConference> awards= new AchivementConferenceController().getAwards(teacher.getFid());
+            String[] strings = getConfString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(confList);
+    }
+    
+    public void refreshJournal(){
+        journalList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementJournal> awards = new AchivementJournalController().getAwards(teacher.getFid());
+            String[] strings = getJournalString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(journalList);
+    }
+    
+    public void refreshWorkshop(){
+        workshopList.setModel(new javax.swing.AbstractListModel<String>() {
+            ArrayList<AchivementWorkshop> awards = new AchivementWorkshopController().getAwards(teacher.getFid());
+            String[] strings = getWorkshopString(awards);
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(workshopList);
+    }
     /**
      * @param args the command line arguments
      */
@@ -235,6 +353,7 @@ public class FacultyPanel extends javax.swing.JFrame {
     private javax.swing.JList<String> AwardList;
     private javax.swing.JMenuItem LogoutMenuItem;
     private javax.swing.JMenuItem awardMenuItem;
+    private javax.swing.JList<String> confList;
     private javax.swing.JMenuItem conferenceMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenuItem editMenuItem;
@@ -246,7 +365,9 @@ public class FacultyPanel extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JList<String> journalList;
     private javax.swing.JMenuItem journalMenuItem;
+    private javax.swing.JList<String> workshopList;
     private javax.swing.JMenuItem workshopMenuItem;
     // End of variables declaration//GEN-END:variables
 }

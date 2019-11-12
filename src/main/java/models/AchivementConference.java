@@ -85,7 +85,7 @@ public class AchivementConference {
     }
     
     public String toString(){
-        return conferenceName+":"+titlePaper+" on "+datePresentation.toString();
+        return conferenceName+":"+titlePaper+"("+type+") "+" on "+datePresentation.toString();
     }
     
 }

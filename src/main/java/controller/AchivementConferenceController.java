@@ -8,7 +8,9 @@ package controller;
 import database.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import models.AchivementConference;
 
 /**
@@ -94,5 +96,27 @@ public class AchivementConferenceController extends AchivementConference{
             System.err.println(e.getMessage());
         }
         return 0;
+    }
+    
+    public ArrayList<AchivementConference> getAwards(int fid){
+        ArrayList<AchivementConference> awards = new ArrayList<>();
+        AchivementConference achivementConference = new AchivementConference();
+        ResultSet resultSet;
+        String sql = "";
+        try{
+            sql =  "select * from ach_conf where fid=?";
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, fid);
+            resultSet = pst.executeQuery();
+            while(resultSet.next()){
+                //name title date type fid
+                achivementConference = new AchivementConference(resultSet.getInt(6), resultSet.getString(2), resultSet.getString(3), resultSet.getDate(4),resultSet.getString(5));
+                awards.add(achivementConference);
+            }
+            return awards;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+        return awards;
     }
 }
