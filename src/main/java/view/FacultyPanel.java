@@ -10,10 +10,15 @@ import controller.AchivementConferenceController;
 import controller.AchivementJournalController;
 import controller.AchivementWorkshopController;
 import controller.TeacherController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
 import models.AchievementAward;
 import models.AchivementConference;
 import models.AchivementJournal;
@@ -31,10 +36,10 @@ public class FacultyPanel extends javax.swing.JFrame {
      */
     public FacultyPanel(Teacher teacher) {
         this.teacher = teacher;
-        this.awards = new AchivementAwardController().getAwards(this.teacher.getFid());
-        this.conferences = new AchivementConferenceController().getAwards(this.teacher.getFid());
-        this.journals = new AchivementJournalController().getAwards(this.teacher.getFid());
-        this.workshops = new AchivementWorkshopController().getAwards(this.teacher.getFid());
+        awards = new AchivementAwardController().getAwards(this.teacher.getFid());
+        conferences = new AchivementConferenceController().getAwards(this.teacher.getFid());
+        journals = new AchivementJournalController().getAwards(this.teacher.getFid());
+        workshops = new AchivementWorkshopController().getAwards(this.teacher.getFid());
         initComponents();
     }
         
@@ -76,8 +81,10 @@ public class FacultyPanel extends javax.swing.JFrame {
     
     
     public void refreshAward(){
+        awards = new AchivementAwardController().getAwards(this.teacher.getFid());
         AwardList.setModel(new javax.swing.AbstractListModel<String>() {
-            awards = new AchivementAwardController().getAwards(this.teacher.getFid());
+            //AchivementAwardController achivementAwardController = new AchivementAwardController();
+            //awards = achivementAwardController.getAwards(teacher.getFid());
             String[] strings = getAwardString(awards);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -86,8 +93,10 @@ public class FacultyPanel extends javax.swing.JFrame {
     }
     
     public void refreshConf(){
+        conferences = new AchivementConferenceController().getAwards(this.teacher.getFid());
         confList.setModel(new javax.swing.AbstractListModel<String>() {
-            conferences = new AchivementConferenceController().getAwards(teacher.getFid());
+            //AchivementConferenceController achivementConferenceController = new AchivementConferenceController();
+            //conferences = achivementConferenceController.getAwards(this.teacher.getFid());
             String[] strings = getConfString(conferences);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -96,8 +105,9 @@ public class FacultyPanel extends javax.swing.JFrame {
     }
     
     public void refreshJournal(){
+        this.journals = new AchivementJournalController().getAwards(this.teacher.getFid());
         journalList.setModel(new javax.swing.AbstractListModel<String>() {
-            journals = new AchivementJournalController().getAwards(teacher.getFid());
+            //journals = new AchivementJournalController().getAwards(teacher.getFid());
             String[] strings = getJournalString(journals);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -106,8 +116,9 @@ public class FacultyPanel extends javax.swing.JFrame {
     }
     
     public void refreshWorkshop(){
+        workshops = new AchivementWorkshopController().getAwards(teacher.getFid());
         workshopList.setModel(new javax.swing.AbstractListModel<String>() {
-            workshops = new AchivementWorkshopController().getAwards(teacher.getFid());
+            //workshops = new AchivementWorkshopController().getAwards(teacher.getFid());
             String[] strings = getWorkshopString(workshops);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
@@ -151,6 +162,21 @@ public class FacultyPanel extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        AwardList.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                if(SwingUtilities.isRightMouseButton(e)){
+                    AwardList.setSelectedIndex(AwardList.locationToIndex(e.getPoint()));
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem itemShow = new JMenuItem("Show");
+                    JMenuItem itemUpdate = new JMenuItem("Update");
+                    JMenuItem itemRemove = new JMenuItem("Remove");
+                    menu.add(itemShow);
+                    menu.add(itemRemove);
+                    menu.add(itemUpdate);
+                    menu.show(AwardList, e.getPoint().y, e.getPoint().y);
+                }
+            }
+        });
         jScrollPane1.setViewportView(AwardList);
 
         jTabbedPane1.addTab("Awards", jScrollPane1);
@@ -160,6 +186,21 @@ public class FacultyPanel extends javax.swing.JFrame {
             String[] strings = getConfString(conferences);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        confList.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                if(SwingUtilities.isRightMouseButton(e)){
+                    confList.setSelectedIndex(confList.locationToIndex(e.getPoint()));
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem itemShow = new JMenuItem("Show");
+                    JMenuItem itemUpdate = new JMenuItem("Update");
+                    JMenuItem itemRemove = new JMenuItem("Remove");
+                    menu.add(itemShow);
+                    menu.add(itemRemove);
+                    menu.add(itemUpdate);
+                    menu.show(confList, e.getPoint().y, e.getPoint().y);
+                }
+            }
         });
         jScrollPane2.setViewportView(confList);
 
@@ -171,6 +212,21 @@ public class FacultyPanel extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        journalList.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                if(SwingUtilities.isRightMouseButton(e)){
+                    journalList.setSelectedIndex(journalList.locationToIndex(e.getPoint()));
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem itemShow = new JMenuItem("Show");
+                    JMenuItem itemUpdate = new JMenuItem("Update");
+                    JMenuItem itemRemove = new JMenuItem("Remove");
+                    menu.add(itemShow);
+                    menu.add(itemRemove);
+                    menu.add(itemUpdate);
+                    menu.show(journalList, e.getPoint().y, e.getPoint().y);
+                }
+            }
+        });
         jScrollPane3.setViewportView(journalList);
 
         jTabbedPane1.addTab("Journal", jScrollPane3);
@@ -180,6 +236,21 @@ public class FacultyPanel extends javax.swing.JFrame {
             String[] strings = getWorkshopString(workshops);
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        workshopList.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e){
+                if(SwingUtilities.isRightMouseButton(e)){
+                    workshopList.setSelectedIndex(workshopList.locationToIndex(e.getPoint()));
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem itemShow = new JMenuItem("Show");
+                    JMenuItem itemUpdate = new JMenuItem("Update");
+                    JMenuItem itemRemove = new JMenuItem("Remove");
+                    menu.add(itemShow);
+                    menu.add(itemRemove);
+                    menu.add(itemUpdate);
+                    menu.show(workshopList, e.getPoint().y, e.getPoint().y);
+                }
+            }
         });
         jScrollPane4.setViewportView(workshopList);
 
@@ -381,3 +452,6 @@ public class FacultyPanel extends javax.swing.JFrame {
     public ArrayList<AchivementJournal> journals;
     public ArrayList<AchivementWorkshop> workshops;
 }
+
+      
+

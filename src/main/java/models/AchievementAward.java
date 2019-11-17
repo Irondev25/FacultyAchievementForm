@@ -60,6 +60,6 @@ public class AchievementAward {
     
     @Override
     public String toString(){
-        return detailAward.substring(0,(detailAward.length() > 100)?100:detailAward.length()) +" "+ date.toString();
+        return detailAward.substring(0,(detailAward.length() > 100)?100:detailAward.length()) +" on "+ date.toString();
     }
 }

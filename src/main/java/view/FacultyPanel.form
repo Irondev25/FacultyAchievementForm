@@ -134,6 +134,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="AwardList.addMouseListener(new MouseAdapter(){&#xa;    public void mousePressed(MouseEvent e){&#xa;        if(SwingUtilities.isRightMouseButton(e)){&#xa;            AwardList.setSelectedIndex(AwardList.locationToIndex(e.getPoint()));&#xa;            JPopupMenu menu = new JPopupMenu();&#xa;        JMenuItem itemShow = new JMenuItem(&quot;Show&quot;);&#xa;        JMenuItem itemUpdate = new JMenuItem(&quot;Update&quot;);&#xa;        JMenuItem itemRemove = new JMenuItem(&quot;Remove&quot;);&#xa;        menu.add(itemShow);&#xa;        menu.add(itemRemove);&#xa;        menu.add(itemUpdate);&#xa;        menu.show(AwardList, e.getPoint().y, e.getPoint().y);&#xa;        }&#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -157,6 +158,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="confList.addMouseListener(new MouseAdapter(){&#xa;    public void mousePressed(MouseEvent e){&#xa;        if(SwingUtilities.isRightMouseButton(e)){&#xa;            confList.setSelectedIndex(confList.locationToIndex(e.getPoint()));&#xa;            JPopupMenu menu = new JPopupMenu();&#xa;        JMenuItem itemShow = new JMenuItem(&quot;Show&quot;);&#xa;        JMenuItem itemUpdate = new JMenuItem(&quot;Update&quot;);&#xa;        JMenuItem itemRemove = new JMenuItem(&quot;Remove&quot;);&#xa;        menu.add(itemShow);&#xa;        menu.add(itemRemove);&#xa;        menu.add(itemUpdate);&#xa;        menu.show(confList, e.getPoint().y, e.getPoint().y);&#xa;        }&#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -180,6 +182,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="journalList.addMouseListener(new MouseAdapter(){&#xa;    public void mousePressed(MouseEvent e){&#xa;        if(SwingUtilities.isRightMouseButton(e)){&#xa;            journalList.setSelectedIndex(journalList.locationToIndex(e.getPoint()));&#xa;            JPopupMenu menu = new JPopupMenu();&#xa;        JMenuItem itemShow = new JMenuItem(&quot;Show&quot;);&#xa;        JMenuItem itemUpdate = new JMenuItem(&quot;Update&quot;);&#xa;        JMenuItem itemRemove = new JMenuItem(&quot;Remove&quot;);&#xa;        menu.add(itemShow);&#xa;        menu.add(itemRemove);&#xa;        menu.add(itemUpdate);&#xa;        menu.show(journalList, e.getPoint().y, e.getPoint().y);&#xa;        }&#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -203,6 +206,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="workshopList.addMouseListener(new MouseAdapter(){&#xa;    public void mousePressed(MouseEvent e){&#xa;        if(SwingUtilities.isRightMouseButton(e)){&#xa;            workshopList.setSelectedIndex(workshopList.locationToIndex(e.getPoint()));&#xa;            JPopupMenu menu = new JPopupMenu();&#xa;        JMenuItem itemShow = new JMenuItem(&quot;Show&quot;);&#xa;        JMenuItem itemUpdate = new JMenuItem(&quot;Update&quot;);&#xa;        JMenuItem itemRemove = new JMenuItem(&quot;Remove&quot;);&#xa;        menu.add(itemShow);&#xa;        menu.add(itemRemove);&#xa;        menu.add(itemUpdate);&#xa;        menu.show(workshopList, e.getPoint().y, e.getPoint().y);&#xa;        }&#xa;    }&#xa;});"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
