@@ -110,7 +110,7 @@ public class AchivementConferenceController extends AchivementConference{
             resultSet = pst.executeQuery();
             while(resultSet.next()){
                 //name title date type fid
-                achivementConference = new AchivementConference(resultSet.getInt(6), resultSet.getString(2), resultSet.getString(3), resultSet.getDate(4),resultSet.getString(5));
+                achivementConference = new AchivementConference(resultSet.getInt(1),resultSet.getInt(6), resultSet.getString(2), resultSet.getString(3), resultSet.getDate(4),resultSet.getString(5));
                 awards.add(achivementConference);
             }
             return awards;

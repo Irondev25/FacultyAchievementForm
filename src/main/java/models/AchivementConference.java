@@ -24,7 +24,8 @@ public class AchivementConference {
     public AchivementConference() {
     }
     
-    public AchivementConference(int fid, String conferenceName, String titlePaper, Date datePresentation, String type) {
+    public AchivementConference(int pid,int fid, String conferenceName, String titlePaper, Date datePresentation, String type) {
+        this.pid = pid;
         this.fid = fid;
         this.conferenceName = conferenceName;
         this.titlePaper = titlePaper;

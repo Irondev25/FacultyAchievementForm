@@ -21,15 +21,17 @@ public class AchievementAward {
     public AchievementAward() {
     }
     
-    
-    
-    public AchievementAward(int fid, Date date, String detailAward) {
+    public AchievementAward(int pid, int fid, Date date, String detailAward) {
+        this.pid = pid;
         this.fid = fid;
         this.date = date;
         this.detailAward = detailAward;
     }
     
-
+    public int getPid() {
+        return pid;
+    }
+    
     public int getFid() {
         return fid;
     }

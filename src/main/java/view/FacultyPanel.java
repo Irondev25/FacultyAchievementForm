@@ -10,6 +10,8 @@ import controller.AchivementConferenceController;
 import controller.AchivementJournalController;
 import controller.AchivementWorkshopController;
 import controller.TeacherController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowListener;
@@ -168,8 +170,27 @@ public class FacultyPanel extends javax.swing.JFrame {
                     AwardList.setSelectedIndex(AwardList.locationToIndex(e.getPoint()));
                     JPopupMenu menu = new JPopupMenu();
                     JMenuItem itemShow = new JMenuItem("Show");
+                    itemShow.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            new ShowAward(teacher, awards.get(AwardList.getSelectedIndex())).setVisible(true);
+                        }
+                    });
                     JMenuItem itemUpdate = new JMenuItem("Update");
                     JMenuItem itemRemove = new JMenuItem("Remove");
+                    itemRemove.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            AchievementAward temp = awards.get(AwardList.getSelectedIndex());
+                            System.out.println(temp.getPid());
+                            int res = new AchivementAwardController().deleteAchivementAward(temp.getPid());
+                            if(res > 0){
+                                JOptionPane.showMessageDialog(null, "Award Deleted");
+                                refreshAward();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Unsuccessful");
+                            }
+                        }
+                    });
                     menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
@@ -193,8 +214,26 @@ public class FacultyPanel extends javax.swing.JFrame {
                     confList.setSelectedIndex(confList.locationToIndex(e.getPoint()));
                     JPopupMenu menu = new JPopupMenu();
                     JMenuItem itemShow = new JMenuItem("Show");
+                    itemShow.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            new ShowConference(teacher,conferences.get(confList.getSelectedIndex())).setVisible(true);
+                        }
+                    });
                     JMenuItem itemUpdate = new JMenuItem("Update");
                     JMenuItem itemRemove = new JMenuItem("Remove");
+                    itemRemove.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            AchivementConference temp = conferences.get(confList.getSelectedIndex());
+                            int res = new AchivementConferenceController().deleteAchivementConference(temp.getPid());
+                            if(res > 0){
+                                JOptionPane.showMessageDialog(null, "Award Deleted");
+                                refreshConf();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Unsuccessful");
+                            }
+                        }
+                    });
                     menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
@@ -218,8 +257,27 @@ public class FacultyPanel extends javax.swing.JFrame {
                     journalList.setSelectedIndex(journalList.locationToIndex(e.getPoint()));
                     JPopupMenu menu = new JPopupMenu();
                     JMenuItem itemShow = new JMenuItem("Show");
+                    itemShow.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            new ShowJournal(teacher, journals.get(journalList.getSelectedIndex())).setVisible(true);
+                        }
+                    });
                     JMenuItem itemUpdate = new JMenuItem("Update");
                     JMenuItem itemRemove = new JMenuItem("Remove");
+                    itemRemove.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            AchivementJournal temp = journals.get(journalList.getSelectedIndex());
+
+                            int res = new AchivementJournalController().deleteAchivementJournal(temp.getPid());
+                            if(res > 0){
+                                JOptionPane.showMessageDialog(null, "Award Deleted");
+                                refreshJournal();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Unsuccessful");
+                            }
+                        }
+                    });
                     menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
@@ -243,8 +301,26 @@ public class FacultyPanel extends javax.swing.JFrame {
                     workshopList.setSelectedIndex(workshopList.locationToIndex(e.getPoint()));
                     JPopupMenu menu = new JPopupMenu();
                     JMenuItem itemShow = new JMenuItem("Show");
+                    itemShow.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            new ShowWorkShop(teacher, workshops.get(workshopList.getSelectedIndex())).setVisible(true);
+                        }
+                    });
                     JMenuItem itemUpdate = new JMenuItem("Update");
                     JMenuItem itemRemove = new JMenuItem("Remove");
+                    itemRemove.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            AchivementWorkshop temp = workshops.get(workshopList.getSelectedIndex());
+                            int res = new AchivementWorkshopController().deleteAchivementWorkshop(temp.getPid());
+                            if(res > 0){
+                                JOptionPane.showMessageDialog(null, "Award Deleted");
+                                refreshWorkshop();
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Unsuccessful");
+                            }
+                        }
+                    });
                     menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);

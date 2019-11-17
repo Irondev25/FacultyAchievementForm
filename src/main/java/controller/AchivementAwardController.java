@@ -133,7 +133,8 @@ public class AchivementAwardController extends AchievementAward{
             pst.setInt(1, fid);
             resultSet = pst.executeQuery();
             while(resultSet.next()){
-                achievementAward = new AchievementAward(resultSet.getInt(4),resultSet.getDate(2),resultSet.getString(3));
+                achievementAward = new AchievementAward(resultSet.getInt(1),resultSet.getInt(4),resultSet.getDate(2),resultSet.getString(3));
+                System.out.println(achievementAward.getPid());
                 awards.add(achievementAward);
             }
             return awards;
