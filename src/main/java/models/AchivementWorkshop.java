@@ -6,6 +6,7 @@
 package models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -53,6 +54,10 @@ public class AchivementWorkshop {
 
     public void setDate_workshop(Date date_workshop) {
         this.date_workshop = date_workshop;
+    }
+    
+    public LocalDate getLocalDate(){
+        return this.date_workshop.toLocalDate();
     }
 
     public String getLocation() {

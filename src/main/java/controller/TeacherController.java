@@ -44,7 +44,7 @@ public class TeacherController extends Teacher{
             pst.setString(7, teacher.getSex());
             pst.setInt(8, teacher.getDid());
             pst.setString(9, teacher.getLoginId());
-            pst.setString(10, teacher.getFname());
+            pst.setString(10, teacher.getPassword());
             res = pst.executeUpdate();
         }catch(SQLException e){
             System.out.println(e.getMessage());

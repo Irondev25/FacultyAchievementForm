@@ -304,6 +304,7 @@ public class Register extends javax.swing.JFrame {
         password = new String(PasswordField.getPassword());
         System.out.println(minit.length());
         Teacher teacher = new Teacher(fname,lname,minit,email,sex,loginId,password,dob,doj,did);
+        System.out.println(password);
         int res = teacherController.createAccount(teacher);
         Teacher dbTeacher = teacherController.getTeacherByFname(fname);
         for(int i=0; i<mobileNums.size(); i++){
@@ -315,6 +316,8 @@ public class Register extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(this, "Account Creation Unsuccessfull");
         }
+        this.dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_subButtonActionPerformed
 
     private void sexComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexComboBoxActionPerformed

@@ -32,8 +32,8 @@ import models.Teacher;
  * @author bhask
  */
 public class FacultyPanel extends javax.swing.JFrame {
-
-    /**
+    
+/**
      * Creates new form FacultyPanel
      */
     public FacultyPanel(Teacher teacher) {
@@ -44,7 +44,27 @@ public class FacultyPanel extends javax.swing.JFrame {
         workshops = new AchivementWorkshopController().getAwards(this.teacher.getFid());
         initComponents();
     }
-        
+    
+    /*private void spawnUpdate(AchievementAward achAward){
+        new AwardUpdate(this, this.teacher, achAward).setVisible(true);
+    }
+    
+    private void spawnConfUpdate(AchivementConference achConf){
+        new ConferenceUpdate(this, this.teacher, achConf).setVisible(true);
+    }*/
+    
+    private <T> void spawnUpdater(T achivement){
+        if(achivement.getClass() == AchievementAward.class){
+            new AwardUpdate(this, this.teacher, (AchievementAward)achivement).setVisible(true);
+        }else if(achivement.getClass() == AchivementConference.class){
+            new ConferenceUpdate(this, this.teacher, (AchivementConference)achivement).setVisible(true);
+        }else if(achivement.getClass() == AchivementJournal.class){
+            new JournalUpdate(this, this.teacher, (AchivementJournal)achivement).setVisible(true);
+        }else if(achivement.getClass() == AchivementWorkshop.class){
+            new WorkshopUpdate(this, this.teacher, (AchivementWorkshop)achivement).setVisible(true);
+        }
+    }
+    
     private String[] getAwardString(ArrayList<AchievementAward> list){
         int n = list.size();
         String[] strings = new String[n];
@@ -156,6 +176,7 @@ public class FacultyPanel extends javax.swing.JFrame {
         conferenceMenuItem = new javax.swing.JMenuItem();
         journalMenuItem = new javax.swing.JMenuItem();
         workshopMenuItem = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -176,6 +197,11 @@ public class FacultyPanel extends javax.swing.JFrame {
                         }
                     });
                     JMenuItem itemUpdate = new JMenuItem("Update");
+                    itemUpdate.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            spawnUpdater(awards.get(AwardList.getSelectedIndex()));
+                        }
+                    });
                     JMenuItem itemRemove = new JMenuItem("Remove");
                     itemRemove.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
@@ -220,6 +246,12 @@ public class FacultyPanel extends javax.swing.JFrame {
                         }
                     });
                     JMenuItem itemUpdate = new JMenuItem("Update");
+                    itemUpdate.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            //new ConferenceUpdate(facultyPanel, teacher, achivementConference)
+                            spawnUpdater(conferences.get(confList.getSelectedIndex()));
+                        }
+                    });
                     JMenuItem itemRemove = new JMenuItem("Remove");
                     itemRemove.addActionListener(new ActionListener(){
                         public void actionPerformed(ActionEvent e){
@@ -263,6 +295,11 @@ public class FacultyPanel extends javax.swing.JFrame {
                         }
                     });
                     JMenuItem itemUpdate = new JMenuItem("Update");
+                    itemUpdate.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            spawnUpdater(journals.get(journalList.getSelectedIndex()));
+                        }
+                    });
                     JMenuItem itemRemove = new JMenuItem("Remove");
                     itemRemove.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e){
@@ -307,6 +344,11 @@ public class FacultyPanel extends javax.swing.JFrame {
                         }
                     });
                     JMenuItem itemUpdate = new JMenuItem("Update");
+                    itemUpdate.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            spawnUpdater(workshops.get(workshopList.getSelectedIndex()));
+                        }
+                    });
                     JMenuItem itemRemove = new JMenuItem("Remove");
                     itemRemove.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e){
@@ -395,6 +437,9 @@ public class FacultyPanel extends javax.swing.JFrame {
         jMenu1.add(workshopMenuItem);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Admin");
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -509,6 +554,7 @@ public class FacultyPanel extends javax.swing.JFrame {
     private javax.swing.JMenuItem editMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

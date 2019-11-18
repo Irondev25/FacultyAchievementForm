@@ -52,10 +52,12 @@ public class AchivementAwardController extends AchievementAward{
         String sql="";
         PreparedStatement pst;
         try {
-            sql = "update ach_award set ondate=?,details=?";
+            sql = "update ach_award set ondate=?,details=? where pid=?";
             pst = con.prepareStatement(sql);
             pst.setDate(1, achievementAward.getDate());
             pst.setString(2,achievementAward.getDetailAward());
+            pst.setInt(3, achievementAward.getPid());
+            System.out.println(pst.toString());
             res = pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -134,7 +136,7 @@ public class AchivementAwardController extends AchievementAward{
             resultSet = pst.executeQuery();
             while(resultSet.next()){
                 achievementAward = new AchievementAward(resultSet.getInt(1),resultSet.getInt(4),resultSet.getDate(2),resultSet.getString(3));
-                System.out.println(achievementAward.getPid());
+                
                 awards.add(achievementAward);
             }
             return awards;

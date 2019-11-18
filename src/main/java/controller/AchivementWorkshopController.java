@@ -51,12 +51,13 @@ public class AchivementWorkshopController {
         String sqlString="";
         int res=0;
         try {
-            sqlString="update ach_workshop(topic,date_workshop,location,type) values(?,?,?,?)";
+            sqlString="update ach_workshop set topic=?,date_workshop=?,location=?,type=? where pid=?";
             pst = con.prepareStatement(sqlString);
             pst.setString(1, achivementWorkshop.getTopic());
             pst.setDate(2, achivementWorkshop.getDate_workshop());
             pst.setString(3, achivementWorkshop.getLocation());
             pst.setString(4, achivementWorkshop.getType());
+            pst.setInt(5, achivementWorkshop.getPid());
             res = pst.executeUpdate();
             return res;
         } catch (SQLException e) {

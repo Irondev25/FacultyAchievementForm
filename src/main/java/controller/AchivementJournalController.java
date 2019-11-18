@@ -55,13 +55,14 @@ public class AchivementJournalController extends AchivementJournal{
         String sql="";
         PreparedStatement pst;
         try {
-            sql = "update ach_journal set title_journal=?,title_paper=?,date_pub=?,type=?,impact_factor=?";
+            sql = "update ach_journal set title_journal=?,title_paper=?,date_pub=?,type=?,impact_factor=? where pid=?";
             pst = con.prepareStatement(sql);
             pst.setString(1, achivementJournal.getTitleJournal());
             pst.setString(2, achivementJournal.getTitlePaper());
             pst.setDate(3, achivementJournal.getDatePub());
             pst.setString(4, achivementJournal.getType());
             pst.setDouble(5, achivementJournal.getImpact_factor());
+            pst.setInt(6, achivementJournal.getPid());
             res = pst.executeUpdate();
             return res;
         } catch (SQLException e) {

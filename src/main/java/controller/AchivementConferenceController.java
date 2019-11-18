@@ -53,12 +53,13 @@ public class AchivementConferenceController extends AchivementConference{
         String sql="";
         PreparedStatement pst;
         try {
-            sql = "update ach_conf set name=?,title=?,date_pre=?,type=?";
+            sql = "update ach_conf set name=?,title=?,date_pre=?,type=? where pid=?";
             pst = con.prepareStatement(sql);
             pst.setString(1, achivementConference.getConferenceName());
             pst.setString(2, achivementConference.getTitlePaper());
             pst.setDate(3, achivementConference.getDatePresentation());
             pst.setString(4, achivementConference.getType());
+            pst.setInt(5, achivementConference.getPid());
             res = pst.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
