@@ -141,4 +141,13 @@ public class Teacher {
     public LocalDate getDojDate(){
         return this.doj.toLocalDate();
     }
+    
+    public String getFullName(){
+        return this.getFname() + " " + this.getMname() + " " +this.getLname();
+    }
+    
+    @Override
+    public String toString(){
+        return getFullName();
+    }
 }

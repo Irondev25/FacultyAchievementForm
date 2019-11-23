@@ -50,4 +50,13 @@ public class DepartmentController extends Department{
         return departments;
     }
     
+    
+    public String[] getDepartmentListString() {
+        ArrayList<Department> departments = this.getDepartmentList();
+        String [] depts = new String[departments.size()];
+        for(int i=0; i<departments.size(); i++){
+            depts[i] = departments.get(i).toString();
+        }
+        return depts;
+    }
 }

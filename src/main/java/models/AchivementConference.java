@@ -86,7 +86,12 @@ public class AchivementConference {
     }
     
     public String toString(){
-        return conferenceName+":"+titlePaper+"("+type+") "+" on "+datePresentation.toString();
+        String output = "<html><hr/>Conference Name: <b>" + 
+                getConferenceName().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + 
+                "</b><br/>Paper Title: " + 
+                getTitlePaper().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + 
+                "<br/>Presentation Date: " + getDatePresentation().toString() + "<br/>Type: "+ getType() + "<hr/></html>";
+        return output;
     }
     
 }

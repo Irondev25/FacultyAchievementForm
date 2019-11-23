@@ -176,7 +176,9 @@ public class FacultyPanel extends javax.swing.JFrame {
         conferenceMenuItem = new javax.swing.JMenuItem();
         journalMenuItem = new javax.swing.JMenuItem();
         workshopMenuItem = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        manegeMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        changeHodMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -438,8 +440,27 @@ public class FacultyPanel extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText("Admin");
-        jMenuBar1.add(jMenu3);
+        manegeMenu.setText("Admin");
+
+        jMenuItem1.setText("Manage Teacher");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        manegeMenu.add(jMenuItem1);
+
+        changeHodMenuItem.setText("Change HOD");
+        changeHodMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeHodMenuItemActionPerformed(evt);
+            }
+        });
+        manegeMenu.add(changeHodMenuItem);
+
+        if(new TeacherController().isHod(this.teacher)){
+            jMenuBar1.add(manegeMenu);
+        }
 
         setJMenuBar(jMenuBar1);
 
@@ -455,6 +476,7 @@ public class FacultyPanel extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void editMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMenuItemActionPerformed
@@ -467,7 +489,7 @@ public class FacultyPanel extends javax.swing.JFrame {
     private void LogoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutMenuItemActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new Login().setVisible(true);
+        new MainPage().setVisible(true);
     }//GEN-LAST:event_LogoutMenuItemActionPerformed
 
     private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
@@ -509,6 +531,16 @@ public class FacultyPanel extends javax.swing.JFrame {
         new Workshop(this.teacher,this).setVisible(true);
     }//GEN-LAST:event_workshopMenuItemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        new ManageTeacher(teacher).setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void changeHodMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeHodMenuItemActionPerformed
+        // TODO add your handling code here:
+        new ChangeHod(this,teacher).setVisible(true);
+    }//GEN-LAST:event_changeHodMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -548,14 +580,15 @@ public class FacultyPanel extends javax.swing.JFrame {
     private javax.swing.JList<String> AwardList;
     private javax.swing.JMenuItem LogoutMenuItem;
     private javax.swing.JMenuItem awardMenuItem;
+    private javax.swing.JMenuItem changeHodMenuItem;
     private javax.swing.JList<String> confList;
     private javax.swing.JMenuItem conferenceMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenuItem editMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -563,6 +596,7 @@ public class FacultyPanel extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList<String> journalList;
     private javax.swing.JMenuItem journalMenuItem;
+    private javax.swing.JMenu manegeMenu;
     private javax.swing.JList<String> workshopList;
     private javax.swing.JMenuItem workshopMenuItem;
     // End of variables declaration//GEN-END:variables

@@ -62,6 +62,10 @@ public class AchievementAward {
     
     @Override
     public String toString(){
-        return detailAward.substring(0,(detailAward.length() > 100)?100:detailAward.length()) +" on "+ date.toString();
+        String detail =  getDetailAward();
+        String output = "<html><hr/>Details: " + 
+                detailAward.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "<br/>" + 
+                "Date: " + date.toString()+"<hr/></html";
+        return output;
     }
 }

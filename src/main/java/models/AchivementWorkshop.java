@@ -85,6 +85,7 @@ public class AchivementWorkshop {
     }
     
     public String toString(){
-        return topic+"("+type+") at "+this.location+" on "+date_workshop.toString();
+        String output = "<html><hr/>Topic: <b>" + getTopic() + "</b><br/>WorkShop Date: " + getDate_workshop().toString() + "<br/>Location: " + getLocation() + "<br/>Type: " + getType() +"<hr/></html>";
+        return output;
     }
 }
