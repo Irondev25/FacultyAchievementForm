@@ -80,6 +80,7 @@ public class updateFaculty extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         PasswordField.setText(this.teacher.getPassword());
 

@@ -42,6 +42,7 @@ public class Login extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         usernameLabel.setText("Username");
         usernameLabel.setMaximumSize(new java.awt.Dimension(87, 29));

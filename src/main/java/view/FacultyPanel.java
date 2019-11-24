@@ -181,6 +181,7 @@ public class FacultyPanel extends javax.swing.JFrame {
         changeHodMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         AwardList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getAwardString(awards);
@@ -219,7 +220,7 @@ public class FacultyPanel extends javax.swing.JFrame {
                             }
                         }
                     });
-                    menu.add(itemShow);
+                    //menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
                     menu.show(AwardList, e.getPoint().y, e.getPoint().y);
@@ -268,7 +269,7 @@ public class FacultyPanel extends javax.swing.JFrame {
                             }
                         }
                     });
-                    menu.add(itemShow);
+                    //menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
                     menu.show(confList, e.getPoint().y, e.getPoint().y);
@@ -319,7 +320,7 @@ public class FacultyPanel extends javax.swing.JFrame {
                     });
                     menu.add(itemShow);
                     menu.add(itemRemove);
-                    menu.add(itemUpdate);
+                    //menu.add(itemUpdate);
                     menu.show(journalList, e.getPoint().y, e.getPoint().y);
                 }
             }
@@ -365,7 +366,7 @@ public class FacultyPanel extends javax.swing.JFrame {
                             }
                         }
                     });
-                    menu.add(itemShow);
+                    //menu.add(itemShow);
                     menu.add(itemRemove);
                     menu.add(itemUpdate);
                     menu.show(workshopList, e.getPoint().y, e.getPoint().y);

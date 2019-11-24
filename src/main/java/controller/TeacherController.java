@@ -269,6 +269,72 @@ public class TeacherController extends Teacher{
         return teachers;
     }
     
+    public ArrayList<Teacher> getAllTeachers(){
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+        Teacher teacher;
+        String sql = "";
+        int res = 0;
+        PreparedStatement pst;
+        try{
+            sql = "select * from faculty";
+            pst = con.prepareStatement(sql);
+            ResultSet resultSet = pst.executeQuery();
+            while(resultSet.next()){
+                teacher = new Teacher();
+                teacher.setFid(resultSet.getInt(1));
+                teacher.setFname(resultSet.getString(2));
+                teacher.setLname(resultSet.getString(3));
+                teacher.setMname(resultSet.getString(4));
+                teacher.setEmail(resultSet.getString(5));
+                teacher.setDob(resultSet.getDate(6));
+                teacher.setDoj(resultSet.getDate(7));
+                teacher.setSex(resultSet.getString(8));
+                teacher.setDid(resultSet.getInt(9));
+                teacher.setLoginId(resultSet.getString(10));
+                teacher.setPassword(resultSet.getString(11));
+                teachers.add(teacher);
+            }
+            return teachers;
+        }catch(SQLException e){
+            System.err.println("TeacherController:\n"+e);
+        }
+        return teachers;
+    }
+    
+    public ArrayList<Teacher> searchTeachers(String search){
+        ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+        Teacher teacher;
+        String sql = "";
+        int res = 0;
+        PreparedStatement pst;
+        search = search + "%";
+        try{
+            sql = "select * from faculty where fname like ?";
+            pst = con.prepareStatement(sql);
+            pst.setString(1, search);
+            ResultSet resultSet = pst.executeQuery();
+            while(resultSet.next()){
+                teacher = new Teacher();
+                teacher.setFid(resultSet.getInt(1));
+                teacher.setFname(resultSet.getString(2));
+                teacher.setLname(resultSet.getString(3));
+                teacher.setMname(resultSet.getString(4));
+                teacher.setEmail(resultSet.getString(5));
+                teacher.setDob(resultSet.getDate(6));
+                teacher.setDoj(resultSet.getDate(7));
+                teacher.setSex(resultSet.getString(8));
+                teacher.setDid(resultSet.getInt(9));
+                teacher.setLoginId(resultSet.getString(10));
+                teacher.setPassword(resultSet.getString(11));
+                teachers.add(teacher);
+            }
+            return teachers;
+        }catch(SQLException e){
+            System.err.println("TeacherController:\n"+e);
+        }
+        return teachers;
+    }
+    
     public int changeHod(int oldHodId, int newHodId){
         int res = 0;
         String sql;

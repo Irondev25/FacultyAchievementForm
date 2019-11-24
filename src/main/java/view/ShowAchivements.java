@@ -60,10 +60,11 @@ public class ShowAchivements extends javax.swing.JFrame {
         jList4 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText(teacher.getFullName() + " Achivement");
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             ArrayList<AchievementAward> awards = new AchivementAwardController().getAwards(teacher.getFid());
