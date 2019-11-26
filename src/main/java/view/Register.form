@@ -174,6 +174,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="firstNameTextField">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="firstNameTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lastnameLabel">
       <Properties>
@@ -181,6 +184,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="lastNameTextField">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lastNameTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="middleNameTextField">
       <Events>
@@ -198,6 +204,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="emailTextField">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="dobLabel">
       <Properties>
@@ -238,6 +247,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="loginidTextField">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="loginidTextFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="passLabel">
       <Properties>
@@ -245,6 +257,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="PasswordField">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="PasswordFieldFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="subButton">
       <Properties>

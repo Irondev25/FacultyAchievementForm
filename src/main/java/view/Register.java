@@ -11,6 +11,7 @@ import controller.TeacherController;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import models.Department;
 import models.Mobile;
@@ -77,7 +78,19 @@ public class Register extends javax.swing.JFrame {
 
         firstNameLabel.setText("First Name");
 
+        firstNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                firstNameTextFieldFocusLost(evt);
+            }
+        });
+
         lastnameLabel.setText("Last Name");
+
+        lastNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                lastNameTextFieldFocusLost(evt);
+            }
+        });
 
         middleNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +101,12 @@ public class Register extends javax.swing.JFrame {
         middleNameLabel.setText("Middle Name");
 
         emailLabel.setText("E-Mail");
+
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTextFieldFocusLost(evt);
+            }
+        });
 
         dobLabel.setText("DOB");
 
@@ -107,7 +126,19 @@ public class Register extends javax.swing.JFrame {
 
         loginidLabel.setText("Login ID");
 
+        loginidTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                loginidTextFieldFocusLost(evt);
+            }
+        });
+
         passLabel.setText("Password");
+
+        PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                PasswordFieldFocusLost(evt);
+            }
+        });
 
         subButton.setText("Submit");
         subButton.setMultiClickThreshhold(1L);
@@ -370,6 +401,51 @@ public class Register extends javax.swing.JFrame {
         this.dispose();
         new MainPage().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void firstNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_firstNameTextFieldFocusLost
+        // TODO add your handling code here:
+        if(firstNameTextField.getText().isBlank() || firstNameTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(departmentComboBox, "Enter Valid First Name");
+            firstNameTextField.requestFocus();
+            return;
+        }
+    }//GEN-LAST:event_firstNameTextFieldFocusLost
+
+    private void lastNameTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lastNameTextFieldFocusLost
+        // TODO add your handling code here:
+        if(lastNameTextField.getText().isBlank() || lastNameTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(departmentComboBox, "Enter Valid Last Name");
+            lastNameTextField.requestFocus();
+            return;
+        }
+    }//GEN-LAST:event_lastNameTextFieldFocusLost
+
+    private void emailTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTextFieldFocusLost
+        // TODO add your handling code here:
+        String mailRegex = "[A-z0-9._]*@\\w*\\.\\w*.\\w*";
+        if(!Pattern.matches(mailRegex, emailTextField.getText().trim())){
+            JOptionPane.showMessageDialog(departmentComboBox, "Enter valid email address");
+            emailTextField.requestFocus();
+            return;
+        }
+    }//GEN-LAST:event_emailTextFieldFocusLost
+
+    private void loginidTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loginidTextFieldFocusLost
+        // TODO add your handling code here:
+        if(loginidTextField.getText().isBlank() || loginidTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(departmentComboBox, "Login field can't be empty");
+            loginidTextField.requestFocus();
+        }
+    }//GEN-LAST:event_loginidTextFieldFocusLost
+
+    private void PasswordFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusLost
+        // TODO add your handling code here:
+        String pass = String.copyValueOf(PasswordField.getPassword());
+        if(pass.isBlank() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(departmentComboBox, "Enter valid password");
+            PasswordField.requestFocus();
+        }
+    }//GEN-LAST:event_PasswordFieldFocusLost
     
     private String[] arrayListToStrings(){
         String string[] = new String[mobileNums.size()];
