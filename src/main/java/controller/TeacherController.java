@@ -50,7 +50,11 @@ public class TeacherController extends Teacher{
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
-        
+        try {
+            new JavaMailUtil().sendMail(teacher.getEmail(),teacher.getLoginId(),teacher.getPassword());
+        } catch (Exception e) {
+            System.err.println("TeacherController:Create\n"+e);
+        }
         return res;
     }
     

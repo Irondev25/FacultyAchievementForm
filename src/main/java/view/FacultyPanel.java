@@ -318,9 +318,9 @@ public class FacultyPanel extends javax.swing.JFrame {
                             }
                         }
                     });
-                    menu.add(itemShow);
+                    //menu.add(itemShow);
                     menu.add(itemRemove);
-                    //menu.add(itemUpdate);
+                    menu.add(itemUpdate);
                     menu.show(journalList, e.getPoint().y, e.getPoint().y);
                 }
             }
